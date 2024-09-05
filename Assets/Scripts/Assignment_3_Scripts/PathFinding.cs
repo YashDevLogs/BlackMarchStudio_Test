@@ -39,7 +39,7 @@ public class Pathfinding : MonoBehaviour
         }
     }
 
-    private void FindGrid(Vector3 start, Vector3 end)
+    public void FindGrid(Vector3 start, Vector3 end)
     {
         Vector2Int startGridPos = WorldToGridPosition(start);
         Vector2Int endGridPos = WorldToGridPosition(end);
@@ -98,7 +98,7 @@ public class Pathfinding : MonoBehaviour
         }
     }
 
-    private void ReversePath(Node startNode, Node endNode)
+    public void ReversePath(Node startNode, Node endNode)
     {
         List<Vector3> newPath = new List<Vector3>();
         Node currentNode = endNode;
@@ -113,26 +113,26 @@ public class Pathfinding : MonoBehaviour
         path = newPath;
     }
 
-    private Vector2Int WorldToGridPosition(Vector3 worldPosition)
+    public Vector2Int WorldToGridPosition(Vector3 worldPosition)
     {
         int x = Mathf.RoundToInt(worldPosition.x / tileSize);
         int z = Mathf.RoundToInt(worldPosition.z / tileSize);
         return new Vector2Int(x, z);
     }
 
-    private Vector3 GridToWorldPosition(Vector2Int gridPosition)
+    public Vector3 GridToWorldPosition(Vector2Int gridPosition)
     {
         return new Vector3(gridPosition.x * tileSize, 0f, gridPosition.y * tileSize);
     }
 
-    private int GetMovementDistance(Vector2Int a, Vector2Int b)
+    public int GetMovementDistance(Vector2Int a, Vector2Int b)
     {
         int dstX = Mathf.Abs(a.x - b.x);
         int dstZ = Mathf.Abs(a.y - b.y);
         return dstX + dstZ;
     }
 
-    private IEnumerable<Vector2Int> GetNeighbours(Vector2Int gridPos)
+    public IEnumerable<Vector2Int> GetNeighbours(Vector2Int gridPos)
     {
         List<Vector2Int> neighbours = new List<Vector2Int>();
 
@@ -144,7 +144,7 @@ public class Pathfinding : MonoBehaviour
         return neighbours;
     }
 
-    private IEnumerator MoveAlongPath()
+    public IEnumerator MoveAlongPath()
     {
         isMoving = true;
 
@@ -161,7 +161,7 @@ public class Pathfinding : MonoBehaviour
         isMoving = false;
     }
 
-    private class Node
+    public class Node
     {
         public Vector2Int Position;
         public Node Parent;
